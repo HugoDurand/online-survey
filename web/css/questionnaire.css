@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'gothicb';
+    src: url('../font/GOTHICB.TTF');
+}
+
+@font-face {
+    font-family: 'gothic';
+    src: url('../font/GOTHIC.TTF');
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow:auto;
+}
+
+header{
+    width: 100%;
+    height: 10vh;
+    background-color: white;
+    outline: 2px solid #7CACD3 ;
+
+}
+
+.container-fluid{
+    background-color: #fcfcfc;
+}
+
+.question{
+    color: #4c4c4c;
+    font-family: gothicb;
+    font-size: 1.3rem;
+    margin-top: 5vh;
+}
+
+.logo_questionnaire{
+    padding: 1vh;
+    width: 15vh;
+
+}
+
+.titre_questionnaire{
+    display: inline-block;
+    font-family: gothicb;
+    color: #1B1E72;
+    font-size: 3rem;
+}
+
+.form-check{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    font-size: 1rem;
+    font-weight: 600 !important;
+    line-height: 2.5vh;
+    width: 50vw;
+    margin-left: 5vw;
+    color: #333333;
+}
+
+.questionnaire{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+.button{
+    margin : 15vh auto 0 auto;
+    background-color: #c6481e;
+    border: none;
+    color: white;
+    width: 25vh;
+    height: 5vh;
+    border-radius: 50px 50px 50px 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: gothicb;
+}
+
+.img_question{
+    width: 50vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #e0e0e0;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+    cursor: pointer;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #E17216;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+.points{
+    font-size: 1.5rem;
+    color: #7A79DF;
+}
+
+.titreparent{
+    margin: 0 auto;
+    color: #7DA9D2;
+    font-family: gothicb;
+}

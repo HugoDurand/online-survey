@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'gothicb';
+    src: url('../font/GOTHICB.TTF');
+}
+
+html,body{
+    font-family: gothicb;
+}
+
+#barChart{
+    width: auto !important;
+    height: 300px !important;
+}
+
+.titrenom{
+    color: #1b1e72;
+    margin: 10vh;
+    float: right;
+}

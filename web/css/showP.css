@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'gothicb';
+    src: url('../font/GOTHICB.TTF');
+}
+
+html,body{
+    font-family: gothicb;
+}
+
+.titrenom{
+    color: #1b1e72;
+    margin-bottom: 10vh;
+}
+
+#Chart{
+    width: 700px !important;
+    height: auto !important;
+}
+
+.pictos{
+    width: 5vh;
+}
+
+.info{
+    margin-left: 5vh;
+    margin-top: 5vh;
+    display: inline-block;
+
+}
+
+.bar{
+    display: inline-block;
+    margin-top: 5vh;
+    float: right;
+}
+
+

@@ -1,0 +1,130 @@
+{% extends 'AdminBundle::admin.html.twig' %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/showP.css') }}" />
+    {% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+
+    <div class="info">
+        <h1 class="titrenom">{{ participants.prenom }} {{ participants.nom }}</h1>
+
+        <p><img class="pictos" src="{{ asset('img/session.png') }}"> Session {{ session.libelle }}</p><br/>
+        <p><img class="pictos" src="{{ asset('img/survey.png') }}"> Questionnaire {{ questionnaire.libelle }}</p><br/>
+        <p><img class="pictos" src="{{ asset('img/score.png') }}"> Score: {{ reponse.score }}%</p>
+    </div>
+    <div class="bar">
+        <canvas id="Chart"></canvas>
+    </div>
+
+        <div class="col-md-12 ">
+
+
+
+
+            {#<table class="table">#}
+                {#<thead>#}
+                {#<tr>#}
+                    {#<th scope="col">question</th>#}
+                    {#<th scope="col">reponse</th>#}
+                {#</tr>#}
+                {#</thead>#}
+
+                {#{% for t in total %}#}
+                    {#<tbody>#}
+                    {#<tr>#}
+                        {#{% for i in 0..t|length -1 %}#}
+
+                            {#{% if t[i] == 1 %}#}
+
+
+                                {#<td style="background-color: #d3c77c">{{ t[i] }}</td>#}
+
+
+                            {#{% elseif t[i] is same as(0)  %}#}
+
+
+                                {#<td style="background-color: #d37c95">{{ t[i] }}</td>#}
+
+
+                            {#{% else %}#}
+
+
+                                {#<td>{{ t[i] }}</td>#}
+
+
+                            {#{% endif %}#}
+
+                        {#{% endfor %}#}
+                    {#</tr>#}
+
+                    {#</tbody>#}
+                {#{% endfor %}#}
+            {#</table>#}
+
+
+        </div>
+
+</div>
+
+
+
+
+
+
+    <script>
+        var score = {{ reponse.score }};
+        if( score < 50 ){
+            var color1 = 'rgba(255, 99, 132, 0.2)';
+            var color2 = 'rgba(255,99,132,1)';
+            var vali = 'Non Validé';
+        }else{
+            var color1 = 'rgba(75, 192, 192, 0.2)';
+            var color2 = 'rgba(75, 192, 192, 1)';
+            var vali = 'Validé';
+        }
+        var ctx = document.getElementById('Chart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data:{
+                labels: ["{{ reponse.score }}"],
+                datasets: [{
+                    label: vali,
+                    data: [{{ reponse.score }}],
+                    backgroundColor: [
+                        color1
+                    ],
+                    borderColor: [
+                        color2
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                       ticks:{
+                           fontSize: 20
+                       }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            fontSize: 20,
+                            min: 0,
+                            max: 100,
+                            callback: function(value){return value+ "%"}
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: "Percentage"
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+{% endblock %}
+
+

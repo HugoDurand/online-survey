@@ -1,0 +1,83 @@
+{% extends 'AdminBundle::admin.html.twig' %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/showS.css') }}" />
+    {% endblock %}
+
+{% block body %}
+
+    <h1 class="titrenom">{{ session.Libelle }}</h1>
+
+    <canvas id="barChart" width="400" height="400"></canvas>
+<br/>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Numéro Participant</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+
+        {% for p in participants %}
+            <tbody>
+
+            <tr>
+                <td> {{ p.nom }}</td>
+                <td> {{ p.prenom }}</td>
+                <td> {{ p.numParticipant }}</td>
+                <td> <a href="{{ path('showParticipantAction', {id: p.id}) }}"><i class="fas fa-info-circle"></i></a></td>
+            </tr>
+
+            </tbody>
+        {% endfor %}
+    </table>
+
+
+
+    <script>
+        var ctx = document.getElementById("barChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["Score"],
+                datasets: [{
+                    label: 'Score',
+                    data: [{{ score }}],
+                    backgroundColor: [
+                        'rgba(122, 121, 223, 0.3)'
+                    ],
+                    borderColor: [
+                        'rgba(81,81,148,1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks:{
+                            fontSize: 70
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontSize: 70,
+                            min: 0,
+                            max: 100,
+                            callback: function(value){return value+ "%"}
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: "Percentage"
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+{% endblock %}
+
+

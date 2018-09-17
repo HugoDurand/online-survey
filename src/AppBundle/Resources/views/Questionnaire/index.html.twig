@@ -1,0 +1,60 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/questionnaire.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <header>
+        <img class="logo_questionnaire" src="{{ asset('img/logo.png') }}">
+        <h2 class="titre_questionnaire">{{ libelle.1.libelle }}</h2>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 questionnaire">
+
+                <form method="post" class="form" action="{{ path('questionnaire', { 'id': app.request.get('id') })}}">
+                        {% for quest in questionnaire %}
+
+                            {% if quest.0.titreParent %}
+                                <h2 class="titreparent">{{ quest.0.titreParent }}</h2>
+                            {% endif %}
+
+                            <h3 class="question">{{ quest.0.libelle }}</h3>
+                            <p class="points">{{ quest.0.points }} Points</p>
+
+                            {% if quest.0.image %}
+                                <img class="img_question" src="{{ asset('img/img_question/'~quest.0.image) }}">
+                            {% endif %}
+
+                            {% for rep in quest.1 %}
+                                <div class="form-check">
+                                    {% if rep.type == "radio" %}
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" value="{{ rep.idQuestion }}{{ rep.libelle }}{{ rep.bonneReponse }}{{ quest.0.points }}" type="{{ rep.type }}" name="{{ rep.idQuestion }}">
+                                            {{ rep.libelle }}
+                                        </label>
+                                    {% endif %}
+                                </div>
+                                <div class="form-check">
+                                    {% if rep.type == "checkbox" %}
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" value="{{ rep.idQuestion }}{{ rep.libelle }}{{ rep.bonneReponse }}" type="{{ rep.type }}" name="{{ rep.idQuestion }}{{ rep.id }}">
+                                            {{ rep.libelle }}
+                                        </label>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                            <hr>
+                        {% endfor %}
+                        <input class="button" type="submit" name="submit">
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

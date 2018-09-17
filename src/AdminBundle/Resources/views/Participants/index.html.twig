@@ -1,0 +1,43 @@
+{% extends "AdminBundle::admin.html.twig" %}
+
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <a class="add" href="{{ path('addParticipantAction') }}">Add</a>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Numéro Participant</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+
+        {% for p in participants %}
+            <tbody>
+
+            <tr>
+                <td> {{ p.nom }}</td>
+                <td> {{ p.prenom }}</td>
+                <td> {{ p.numParticipant }}</td>
+                <td> <a href="{{ path('showParticipantAction', {id: p.id}) }}"><i class="fas fa-info-circle"></i></a></td>
+                <td> <a href="{{ path('editParticipantAction', {id: p.id}) }}"><i class="far fa-edit"></i></a></td>
+                <td> <a href="{{ path('deleteParticipantAction', {id: p.id}) }}"><i class="fas fa-trash-alt"></i></a></td>
+            </tr>
+
+            </tbody>
+        {% endfor %}
+    </table>
+
+{% endblock %}

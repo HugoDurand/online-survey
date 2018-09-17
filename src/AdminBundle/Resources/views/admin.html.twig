@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %} {% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 sidebar">
+            <a class="logout" href="/logout">Se Déconnecter</a>
+            {#<img class="logo_sidebar" src="{{ asset('img/logo.png') }}">#}
+            <nav class="nav">
+                <ul>
+                    <li><a href="{{ path('dashboardhome')}}">Accueil</a></li>
+                    <li><a href="{{ path('sessionhome')}}">Session</a></li>
+                    <li><a href="{{ path('participanthome')}}">Participants</a></li>
+                    <li><a href="{{ path('usershome')}}">Users</a></li>
+                </ul>
+            </nav>
+        </div>
+         <div class="col-md-10 content">
+
+            {% block body %}{% endblock %}
+
+         </div>
+    </div>
+</div>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'gothicb';
+    src: url('../font/GOTHICB.TTF');
+}
+
+html,body{
+    background-color: #7CACD3;
+    font-family: gothicb;
+}
+
+.formeedit{
+    color: white;
+    width: 80vh;
+    margin:20vh auto 0 auto;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.formeedit label{
+    margin-right: 5vh;
+}
+
+.formeedit select, input{
+    margin-top: 5vh;
+    font-size: 1.1rem;
+
+}
+
+.formeedit select{
+    margin-top: 5vh;
+    color: white;
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid white;
+    cursor: pointer;
+}
+
+.formeedit option{
+    color: black;
+
+}
+
+.formeedit input[type=text], input[type=email], input[type=password]{
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px solid white;
+    color: white;
+}
+
+.formeedit :focus{
+
+outline: none;
+
+}
+
+
+.button{
+    margin-left: 10vh;
+    background-color: #c6481e;
+    border: none;
+    color: white;
+    width: 25vh;
+    height: 5vh;
+    border-radius: 50px 50px 50px 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: gothicb;
+}

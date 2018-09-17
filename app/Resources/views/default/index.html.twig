@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
+    <div class="square">
+        <img class="logo_homepage" src="{{ asset('img/logo_white.png') }}">
+
+        <form class="form" method="post" action="{{ path('homepage')}}">
+            <img class="numero" src="{{ asset('img/numero.png') }}"><input class="textinput" name="numparticipant" type="text">
+            <input class="button" type="submit" name="submit">
+        </form>
+    </div>
+
+{% endblock %}
